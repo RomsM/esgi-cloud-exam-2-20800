@@ -2,14 +2,19 @@ const { Sequelize } = require('sequelize')
 
 // database
 const sequelize = new Sequelize(
-  'postgres://dbexercice1plateformescloud_user:x9lqmSRB9FIfiqovcJyWPsonJbhZ8I6G@dpg-clfhklg3nsgc738usogg-a/dbexercice1plateformescloud', // TODO
+process.env.DATABASE_URL, // Utilise la variable d'environnement DATABASE_URL
   {
+    dialect: 'postgres',
     dialectOptions: {
       ssl: {
         require: true,
         rejectUnauthorized: false,
       },
     },
+    define: {
+      createdAt: 'added',
+      updatedAt: 'updated',
+    }
   },
 );
 
